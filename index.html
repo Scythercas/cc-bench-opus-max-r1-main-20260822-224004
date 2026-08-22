@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>タスク管理</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header class="app-header">
+    <h1>タスク管理</h1>
+    <p class="remaining" role="status">未完了 <span data-testid="remaining-count">0</span> 件</p>
+  </header>
+
+  <main>
+    <h2 class="visually-hidden" id="add-heading">タスクを追加</h2>
+    <form class="add-form" id="add-form" aria-labelledby="add-heading" novalidate>
+      <div class="field field-grow">
+        <label for="task-input">タイトル</label>
+        <input type="text" id="task-input" data-testid="task-input"
+               placeholder="やることを入力" autocomplete="off"
+               aria-describedby="form-error">
+      </div>
+      <div class="field">
+        <label for="due-input">期限日</label>
+        <input type="date" id="due-input" data-testid="due-input">
+      </div>
+      <div class="field">
+        <label for="priority-select">優先度</label>
+        <select id="priority-select" data-testid="priority-select">
+          <option value="high">高</option>
+          <option value="medium" selected>中</option>
+          <option value="low">低</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary" data-testid="add-button">追加</button>
+      <p class="form-error" id="form-error" role="alert"></p>
+    </form>
+
+    <section class="toolbar" aria-label="絞り込みと並べ替え">
+      <div class="filters" role="group" aria-label="絞り込み">
+        <button type="button" class="chip" data-testid="filter-all" data-filter="all" aria-pressed="true">すべて</button>
+        <button type="button" class="chip" data-testid="filter-active" data-filter="active" aria-pressed="false">未完了</button>
+        <button type="button" class="chip" data-testid="filter-completed" data-filter="completed" aria-pressed="false">完了済み</button>
+      </div>
+      <div class="field sort-field">
+        <label for="sort-select">並べ替え</label>
+        <select id="sort-select" data-testid="sort-select">
+          <option value="created">作成順</option>
+          <option value="due">期限昇順</option>
+          <option value="priority">優先度順</option>
+        </select>
+      </div>
+    </section>
+
+    <h2 class="visually-hidden" id="list-heading">タスク一覧</h2>
+    <ul class="task-list" id="task-list" data-testid="task-list" aria-labelledby="list-heading"></ul>
+    <p class="empty-state" id="empty-state" hidden>表示できるタスクはありません。</p>
+
+    <div class="footer-actions">
+      <button type="button" class="btn" data-testid="clear-completed">完了済みを削除</button>
+    </div>
+  </main>
+</div>
+
+<template id="task-template">
+  <li class="task-item" data-testid="task-item">
+    <input type="checkbox" class="toggle" data-testid="toggle">
+    <div class="task-main">
+      <span class="task-title" data-testid="task-title"></span>
+      <span class="task-meta">
+        <span class="badge"></span>
+        <span class="due"></span>
+      </span>
+    </div>
+    <div class="task-actions">
+      <button type="button" class="btn btn-small" data-testid="edit">編集</button>
+      <button type="button" class="btn btn-small btn-danger" data-testid="delete">削除</button>
+    </div>
+  </li>
+</template>
+
+<script src="app.js"></script>
+</body>
+</html>
