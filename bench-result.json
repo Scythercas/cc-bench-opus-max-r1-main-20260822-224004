@@ -1,0 +1,10 @@
+{
+  "repo_url": "https://github.com/Scythercas/cc-bench-opus-max-r1-main-20260822-224004",
+  "pages_url": "https://Scythercas.github.io/cc-bench-opus-max-r1-main-20260822-224004/",
+  "commit_count": 4,
+  "self_check": {
+    "F1": true, "F2": true, "F3": true, "F4": true, "F5": true, "F6": true,
+    "F7": true, "F8": true, "F9": true, "F10": true, "F11": true, "F12": true
+  },
+  "notes": "確認方法: 実機のヘッドレスChromium(既にPCへ入っていたもの)をDevTools Protocol経由で操作し、file:// で index.html を直接開いた状態でF1〜F12と非機能要件を自動検証した(検証スクリプトは成果物に含めず一時ディレクトリで実行、依存インストールなし)。全50項目が合格。内訳: F1=空文字/半角空白のみ/全角空白のみは追加されずEnterキーでの追加は成功、F2=一覧と各行の要素を確認、F3=トグルで完了状態とdoneクラスと残り件数が連動、F4=削除とリロード後も削除が持続、F5=編集ボタン→Enter/保存ボタン/フォーカスアウトで確定しEscapeで取り消し、F6=期限日の保存と表示、F7=既定medium/選択したhighの反映、F8=3種の絞り込みとaria-pressed、F9=作成順/期限昇順(未設定は末尾)/優先度順および絞り込みとの併用、F10=残り件数の数値表示と更新、F11=localStorageへの書き込みとリロード後の復元(file://でも動作することを確認)、F12=完了済みの一括削除とその永続化。非機能: 幅375pxで横スクロールなし(全要素の右端がビューポート内)、Tabキーで全操作要素へ到達しSpaceでトグル・削除後もフォーカスが維持される、全コントロールにアクセシブルな名前あり、prefers-color-scheme:darkで配色が切り替わる、一連の操作を通してconsoleへの出力(error/warning/例外)がゼロ。加えてタイトルがHTMLとして解釈されないことも確認。スクリーンショットで375px・デスクトップの明暗両テーマの表示崩れがないことを目視確認済み。未達なし。補足: 編集欄には必須16種に加えてdata-testid=\"edit-input\"を1つだけ付与した。GitHub Pagesはmainブランチのルートから配信するようAPIで有効化済みで、公開URLの配信開始は待っていない(有効化直後のstatusはbuilding)。"
+}
